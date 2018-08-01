@@ -41,7 +41,7 @@
     function deleteObj(obj) {
 
         let choice = confirm("您确定删除该数据吗? 否则按 cancel 取消 ^_^");
-
+        
         if (choice) {
             let index = myDataBase.findIndex(x => x.itemName === obj.itemName);
             let tempIndex = tempDataBase.findIndex(x => x.itemName === obj.itemName)
@@ -129,10 +129,18 @@ function changeBack(id) {
 $(document).ready(function(){
     
     // build my object data through constructor function
-    function Item(x, y, z) {
+    /* function Item(x, y, z) {
         this.itemName = x;
         this.userName = y;
         this.passWord = z;
+    } */
+
+    function createItem(x, y, z) {
+      return {
+        itemName: x,
+        userName: y,
+        passWord: z
+      }
     }
 
     
@@ -156,9 +164,9 @@ $(document).ready(function(){
             passWord = window.prompt('密码不可以为空， 请再次输入密码：', '密码');
         }
         if (itemName !== null && userName !== null && passWord !==null) {
-            myDataBase.push(new Item(itemName, userName, passWord));
+            myDataBase.push(createItem(itemName, userName, passWord));
             if(tempDataBase.findIndex(x => x.itemName === itemName) === -1) {
-                tempDataBase.push(new Item(itemName, userName, passWord));
+                tempDataBase.push(createItem(itemName, userName, passWord));
             }
         }
         
@@ -186,12 +194,11 @@ $(document).ready(function(){
    $('input[name="submit"]').click(function(){
         
         
-        if (this.form.username.value == "wu" && this.form.password.value == "123") {
+        if (this.form.username.value == "万年青" && this.form.password.value == "194755") {
          window.location.href = '/mydatabase.html';
          return false;   // open the new window in the same page :-)
         } else {
-            $('#loginBox').addClass("animated bounce");
-           // alert("您所输入的用户名和密码不相符！");
+        alert("您所输入的用户名和密码不相符！");
     }
    });
 
@@ -214,13 +221,10 @@ $(document).ready(function(){
 
     });
 
-   display(tempDataBase = myDataBase.sort(function(str1, str2) {
-       return str1.itemName.localeCompare(str2.itemName, 'zh-Hans-CN');
-   })); 
-   
+   display(tempDataBase = myDataBase.sort(function(str1, str2){
+           return str1.itemName.localeCompare(str2.itemName, 'zh-Hans-CN');
+       })); 
+
 
 })
-
-
-// practice 
 
