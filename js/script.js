@@ -135,6 +135,7 @@ $(document).ready(function(){
         this.passWord = z;
     } */
 
+    // build my object through factory function :-) ^_^
     function createItem(x, y, z) {
       return {
         itemName: x,
