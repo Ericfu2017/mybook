@@ -165,9 +165,9 @@ $(document).ready(function(){
             passWord = window.prompt('密码不可以为空， 请再次输入密码：', '密码');
         }
         if (itemName !== null && userName !== null && passWord !==null) {
-            myDataBase.push(createItem(itemName, userName, passWord));
+            myDataBase.unshift(createItem(itemName, userName, passWord));
             if(tempDataBase.findIndex(x => x.itemName === itemName) === -1) {
-                tempDataBase.push(createItem(itemName, userName, passWord));
+                tempDataBase.unshift(createItem(itemName, userName, passWord));
             }
         }
         
@@ -226,6 +226,8 @@ $(document).ready(function(){
            return str1.itemName.localeCompare(str2.itemName, 'zh-Hans-CN');
        })); 
 
-
+    $('#print').click(function(){
+        window.print();
+    });
 })
 
