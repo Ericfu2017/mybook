@@ -9,14 +9,14 @@
 
  localDataBase = JSON.parse(localStorage.getItem('localDataBase'));
 
- console.log(localStorage.getItem('localDataBase'));
+ console.log(localStorage.getItem('localDataBase')); // data test ......
  
  
  
- if (localDataBase) {
-     myDataBase = localDataBase;
+ if (localDataBase) {      // if loacalDataBase not exist yet (for example, first time use), it will return undefined because the localStorage.setItem has not use yet...
+     myDataBase = localDataBase;  //if it already has data, localDataBase will return true, then myDataBase points to the adress reference of localDataBase has been set by localStorage.setItem before :-)
  }
- console.log(myDataBase);
+ console.log(myDataBase); // data test ......
 
 
 
@@ -226,7 +226,7 @@ $(document).ready(function(){
            return str1.itemName.localeCompare(str2.itemName, 'zh-Hans-CN');
        })); 
 
-    $('#print').click(function(){
+    $('#print').click(function(){ //print the myDataBase table :-)
         window.print();
     });
 })
